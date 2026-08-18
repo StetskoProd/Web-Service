@@ -1,0 +1,16 @@
+{
+  "name": "dnipro-transport-gtfs-gateway",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Gateway that converts Dnipro GPS feeds to GTFS Realtime VehiclePositions",
+  "main": "src/server.js",
+  "scripts": {
+    "start": "set PORT=3210&& set HOST=0.0.0.0&& node src/server.js",
+    "start:lan": "set PORT=3210&& set HOST=0.0.0.0&& node src/server.js",
+    "dev": "set PORT=3210&& set HOST=0.0.0.0&& node --watch src/server.js"
+  },
+  "dependencies": {
+    "express": "^4.21.2",
+    "gtfs-realtime-bindings": "^1.1.1"
+  }
+}

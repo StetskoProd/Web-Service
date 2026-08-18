@@ -1,0 +1,22 @@
+version: '3.8'
+
+services:
+  gateway:
+    build: .
+    ports:
+      - "3210:3210"
+    environment:
+      - PORT=3210
+      - HOST=0.0.0.0
+      - NODE_ENV=production
+      - REFRESH_MS=15000
+      - SOURCE_TIMEOUT_MS=10000
+      - BUS_API_URL=https://api-t900.icity.com.ua/api/gps_data/
+      - ELECTRIC_API_URL=http://46.4.68.233:23450/api/gps-data
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:3210/health"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 10s
+    restart: unless-stopped

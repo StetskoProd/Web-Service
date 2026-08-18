@@ -1,0 +1,24 @@
+services:
+  - type: web
+    name: dnipro-gtfs-gateway
+    env: node
+    plan: free
+    buildCommand: npm ci
+    startCommand: npm start
+    autoDeploy: true
+    healthCheckPath: /health
+    envVars:
+      - key: PORT
+        value: "3210"
+      - key: HOST
+        value: "0.0.0.0"
+      - key: NODE_ENV
+        value: "production"
+      - key: REFRESH_MS
+        value: "15000"
+      - key: SOURCE_TIMEOUT_MS
+        value: "10000"
+      - key: BUS_API_URL
+        value: "https://api-t900.icity.com.ua/api/gps_data/"
+      - key: ELECTRIC_API_URL
+        value: "http://46.4.68.233:23450/api/gps-data"
